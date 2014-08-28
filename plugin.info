@@ -1,0 +1,9 @@
+{
+	"title": "$:/plugins/danielo515/import-tools",
+	"description": "patch for more atomic imports",
+	"author": "DanieloRodrigez",
+	"version": "0.0.3",
+	"core-version": ">=5.0.14",
+	"source": "https://github.com/danielo515/import-tools",
+	"plugin-type": "plugin"
+}
