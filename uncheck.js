@@ -1,5 +1,5 @@
 /*\
-title: $:/core/modules/widgets/uncheck.js
+title: $:/plugins/danielo515/import-tools/uncheck.js
 type: application/javascript
 module-type: widget
 

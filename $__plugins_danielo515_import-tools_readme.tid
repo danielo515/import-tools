@@ -1,0 +1,12 @@
+created: 20140828073112839
+creator: DanieloRodriguez
+modified: 20140828073510715
+modifier: DanieloRodriguez
+title: $:/plugins/danielo515/import-tools/readme
+type: text/vnd.tiddlywiki
+
+This plugin provides some GUI tools to manage imports through the new import method that tiddlywiki provides. Available since tiddlywiki 5.0.14.
+
+Currently it shows you which of the tiddlers you're importing exist already on the wiki you are importing to. It also provides you a button that lets you uncheck all those tiddlers.
+
+This is the first version and it will be updated with more options soon.

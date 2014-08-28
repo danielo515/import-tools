@@ -1,9 +1,9 @@
 /*\
-title: $:/core/modules/upgraders/block_existing.js
+title: $:/core/modules/upgraders/mark_existing.js
 type: application/javascript
 module-type: upgrader
 
-Upgrader module that suppresses existing tiddlers 
+Upgrader module that marks already existing tiddlers 
 
 \*/
 (function(){
@@ -18,8 +18,7 @@ exports.upgrade = function(wiki,titles,tiddlers) {
 	// Check for tiddlers on our list
 	$tw.utils.each(titles,function(title) {
 	var existingTiddler = wiki.getTiddler(title);
-	if(existingTiddler && incomingTiddler["plugin-type"] == undefined ) {
-		//tiddlers[title] = Object.create(null);
+	if(existingTiddler && existingTiddler["plugin-type"] == undefined ) {
 		messages[title] = "tiddler that already exists in this wiki";
 	}
 		

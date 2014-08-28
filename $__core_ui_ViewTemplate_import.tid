@@ -1,0 +1,30 @@
+created: 20140827143527139
+creator: DanieloRodriguez
+modified: 20140828070522166
+modifier: DanieloRodriguez
+tags: $:/tags/ViewTemplate
+title: $:/core/ui/ViewTemplate/import
+type: text/vnd.tiddlywiki
+
+\define lingo-base() $:/language/Import/
+<$uncheck>
+<$list filter="[all[current]field:plugin-type[import]]">
+
+<div class="tw-import">
+
+!!Operations with existing tiddlers
+The below buttons operates on tiddlers that are beign imported but exist on this wiki already:
+
+<$button message="tw-uncheck-existing" param=<<currentTiddler>>>Uncheck all</$button>
+
+<<lingo Listing/Hint>>
+
+{{||$:/core/ui/ImportListing}}
+
+<$button message="tw-delete-tiddler" param=<<currentTiddler>>><<lingo Listing/Cancel/Caption>></$button>
+<$button message="tw-perform-import" param=<<currentTiddler>>><<lingo Listing/Import/Caption>></$button>
+
+</div>
+
+</$list>
+</$uncheck>
