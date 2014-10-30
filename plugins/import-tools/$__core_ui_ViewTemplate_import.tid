@@ -10,19 +10,25 @@ type: text/vnd.tiddlywiki
 <$uncheck>
 <$list filter="[all[current]field:plugin-type[import]]">
 
-<div class="tw-import">
+<div class="tc-import">
+
+!!General operations
+The below buttons operates on all the tiddlers that are beign imported
+
+<$button message="pm-uncheck-all" param=<<currentTiddler>>>Uncheck all</$button>
+
 
 !!Operations with existing tiddlers
 The below buttons operates on tiddlers that are beign imported but exist on this wiki already:
 
-<$button message="tw-uncheck-existing" param=<<currentTiddler>>>Uncheck all</$button>
+<$button message="pm-uncheck-existing" param=<<currentTiddler>>>Uncheck existing</$button>
 
 <<lingo Listing/Hint>>
 
 {{||$:/core/ui/ImportListing}}
 
-<$button message="tw-delete-tiddler" param=<<currentTiddler>>><<lingo Listing/Cancel/Caption>></$button>
-<$button message="tw-perform-import" param=<<currentTiddler>>><<lingo Listing/Import/Caption>></$button>
+<$button message="tm-delete-tiddler" param=<<currentTiddler>>><<lingo Listing/Cancel/Caption>></$button>
+<$button message="tm-perform-import" param=<<currentTiddler>>><<lingo Listing/Import/Caption>></$button>
 
 </div>
 

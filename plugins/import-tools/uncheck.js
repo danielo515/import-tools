@@ -17,7 +17,8 @@ var Widget = require("$:/core/modules/widgets/widget.js").widget;
 var UncheckWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 	this.addEventListeners([
-		{type: "tw-uncheck-existing", handler: "handleUncheckExistingEvent"}
+		{type: "pm-uncheck-existing", handler: "handleUncheckExistingEvent"},
+		{type: "pm-uncheck-all", handler: "handleUncheckAllEvent"}
 	]);
 };
 
@@ -43,6 +44,7 @@ UncheckWidget.prototype.execute = function() {
 	// Get our parameters
 	//this.storyTitle = this.getAttribute("story");
 	// Construct the child widgets
+	console.log("Uncheck widget loaded");
 	this.makeChildWidgets();
 };
 
@@ -53,21 +55,35 @@ UncheckWidget.prototype.refresh = function(changedTiddlers) {
 	return false;
 };
 
-UncheckWidget.prototype.handleUncheckExistingEvent = function(event){
-	var self = this, newFields = {},
-	importTiddler = this.wiki.getTiddler(event.param),
+	UncheckWidget.prototype.handleUncheckExistingEvent = function(event){
+		var self = this, newFields = {},
+		importTiddler = this.wiki.getTiddler(event.param),
 		importData = this.wiki.getTiddlerData(event.param,{tiddlers: {}});
-		
+			
 		$tw.utils.each(importData.tiddlers,function(tiddlerFields) {
-			var title = tiddlerFields.title, 
-			existingTiddler = self.wiki.getTiddler(title);
-			if(existingTiddler && existingTiddler["plugin-type"] == undefined ) {
-				newFields["selection-" + title] = "unchecked";
-				}
-				});
+				var title = tiddlerFields.title, 
+				existingTiddler = self.wiki.getTiddler(title);
+				if(existingTiddler && existingTiddler["plugin-type"] == undefined ) {
+					newFields["selection-" + title] = "unchecked";
+					}
+					});
 
 		this.wiki.addTiddler(new $tw.Tiddler(importTiddler,newFields));
-		};
+   };
+ 
+	UncheckWidget.prototype.handleUncheckAllEvent = function(event){
+		var self = this, newFields = {},
+		importTiddler = this.wiki.getTiddler(event.param),
+		importData = this.wiki.getTiddlerData(event.param,{tiddlers: {}});
+		console.log("Uncheck all event");
+		$tw.utils.each(importData.tiddlers,function(tiddlerFields) {
+			var title = tiddlerFields.title;
+			newFields["selection-" + title] = "unchecked";
+			console.log("Unchecked ",title);
+		});
+		
+		this.wiki.addTiddler(new $tw.Tiddler(importTiddler,newFields));
+	};
 
 exports.uncheck = UncheckWidget;
 
